@@ -11,8 +11,8 @@ body {
     float:right;
 }
 
-label{
-    font-size: 50px;
+.topic{
+    font-size: 40px;
     font-weight: 500;
     text-decoration: none;
 }

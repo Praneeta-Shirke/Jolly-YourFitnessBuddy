@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
     <title>Jolly</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.min.js" defer></script>
 </head>
 
 <body>
@@ -16,23 +17,41 @@
         <div class="navbar">
             <ul>
                 <li><a href="home.html">Home</a></li>
+                <li><a href="#">My Diary</a></li>
+                <li><a href="#">Leaderboard</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Sign Up</a></li>
             </ul>
         </div>
     </nav>
-    <h1>Home</h1>
+    <h1>Jolly</h1>
     <div class="logs">
         <h3>Workout</h3>
-        <button>Add to log</button>
+        <span class="WorkoutLogs">
+            <button id="playHappyJolly">Add to log</button>
+        </span>
         <h3>Diet Logs</h3>
         <button>Add to log</button>
     </div>
     <div class="jolly">
-        <iframe src='https://my.spline.design/jollyfoxhome-ef06bf76125fecf17b1012be6acbf4cf/' frameborder='0' width='700px' height='700px'>
+        <iframe src='https://my.spline.design/jollyfoxhome-ef06bf76125fecf17b1012be6acbf4cf/' frameborder='0'
+            width='700px' height='700px'>
 
         </iframe>
     </div>
+    <div class="HappyJolly">
+        <!-- <video id="HappyJolly" src="asset\videos\jolly-fox-happy.mp4" type="video.mp4">
+                Your browser doesn't support the Happy Jolly Animation.
+        </video>
+         -->
+        <iframe id="myIframe" src='https://my.spline.design/jollyfoxhappy-6a8f9487f9dcc0c5cc3903fb245dfee9/'
+            frameborder='0' width='700px' height='700px'></iframe>
+    </div>
+    <div class="SadJolly">
+        <iframe src='https://my.spline.design/jollyfoxsad-e0c6705d846054e649c392453955e519/' frameborder='0' width='700px'
+            height='700px'></iframe>
+    </div>
+    <script src="home.js"></script>
 </body>
 
 </html>
