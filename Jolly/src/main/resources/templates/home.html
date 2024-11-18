@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
     <title>Jolly</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.min.js" defer></script>
 </head>
@@ -50,6 +50,21 @@
     <div class="SadJolly">
         <iframe src='https://my.spline.design/jollyfoxsad-e0c6705d846054e649c392453955e519/' frameborder='0' width='700px'
             height='700px'></iframe>
+    </div>
+
+    <div class="Logs History">
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Workout</th>
+                <th>Diet</th>
+            </tr>
+            <tr th:each="user:${user}">
+                <th th.text="${user.date}"></th>
+                <th th.text="${user.workout}"></th>
+                <th th.text="${user.diet}">
+            </tr>
+        </table>
     </div>
     <script src="home.js"></script>
 </body>
