@@ -3,19 +3,35 @@ package com.JollyPages.Jolly.entities;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Workout {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int workoutid;
 	private String workoutname;
 	private String workouttype;
 	private String muscle;
 	private String difficulty;
-	private String instruction;
-	private LocalDate inputdate;
-	private LocalTime inputtime;
-	public int getId() {
+	private String equipment;
+	
+	public long getWorkoutid() {
+		return workoutid;
+	}
+	public void setWorkoutid(int workoutid) {
+		this.workoutid = workoutid;
+	}
+	public String getEquipment() {
+		return equipment;
+	}
+	public void setEquipment(String equipment) {
+		this.equipment = equipment;
+	}
+	public long getId() {
 		return workoutid;
 	}
 	public void setId(int workoutid) {
@@ -45,41 +61,21 @@ public class Workout {
 	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
 	}
-	public String getInstruction() {
-		return instruction;
-	}
-	public void setInstruction(String instruction) {
-		this.instruction = instruction;
-	}
-	public LocalDate getInputdate() {
-		return inputdate;
-	}
-	public void setInputdate(LocalDate inputdate) {
-		this.inputdate = inputdate;
-	}
-	public LocalTime getInputtime() {
-		return inputtime;
-	}
-	public void setInputtime(LocalTime inputtime) {
-		this.inputtime = inputtime;
-	}
 	@Override
 	public String toString() {
-		return "Workout [workoutid=" + workoutid + ", workoutname=" + workoutname + ", workouttype=" + workouttype + ", muscle="
-				+ muscle + ", difficulty=" + difficulty + ", instruction=" + instruction + ", inputdate=" + inputdate
-				+ ", inputtime=" + inputtime + "]";
+		return "Workout [workoutid=" + workoutid + ", workoutname=" + workoutname + ", workouttype=" + workouttype
+				+ ", muscle=" + muscle + ", difficulty=" + difficulty + ", equipment="
+				+ equipment + "]";
 	}
-	public Workout(int workoutid, String workoutname, String workouttype, String muscle, String difficulty, String instruction,
-			LocalDate inputdate, LocalTime inputtime) {
+	public Workout(int workoutid, String workoutname, String workouttype, String muscle, String difficulty,
+			String instruction, String equipment) {
 		super();
 		this.workoutid = workoutid;
 		this.workoutname = workoutname;
 		this.workouttype = workouttype;
 		this.muscle = muscle;
 		this.difficulty = difficulty;
-		this.instruction = instruction;
-		this.inputdate = inputdate;
-		this.inputtime = inputtime;
+		this.equipment = equipment;
 	}
 	public Workout() {
 		super();
@@ -88,3 +84,9 @@ public class Workout {
 	
 	
 }
+
+
+
+
+
+

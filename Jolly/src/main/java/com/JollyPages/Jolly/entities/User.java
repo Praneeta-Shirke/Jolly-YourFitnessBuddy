@@ -1,15 +1,19 @@
 package com.JollyPages.Jolly.entities;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Transient;
 
 @Entity
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userid;
 	private String firstname;
 	private String lastname;
@@ -19,8 +23,30 @@ public class User {
 	private String goal;
 	@Transient
 	private int otp;
+	@ManyToOne
 	private Workout workout;
+	@ManyToOne
 	private Diet diet;
+	
+	@PrePersist
+    protected void onCreate() {
+        this.timestamp = LocalDateTime.now(); // Automatically set the timestamp before insert
+    }
+	
+	private LocalDateTime timestamp;
+	
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+	public LocalDateTime getTimestamp() {
+		return timestamp;
+	}
+	public void setTimestamp(LocalDateTime timestamp) {
+		this.timestamp = timestamp;
+	}
 	public int getId() {
 		return userid;
 	}
@@ -81,14 +107,15 @@ public class User {
 	public void setDiet(Diet diet) {
 		this.diet = diet;
 	}
+	
 	@Override
 	public String toString() {
 		return "User [userid=" + userid + ", firstname=" + firstname + ", lastname=" + lastname + ", gmail=" + gmail
 				+ ", weight=" + weight + ", height=" + height + ", goal=" + goal + ", otp=" + otp + ", workout="
-				+ workout + ", diet=" + diet + "]";
+				+ workout + ", diet=" + diet + ", timestamp=" + timestamp + "]";
 	}
 	public User(int userid, String firstname, String lastname, String gmail, String weight, String height, String goal,
-			int otp, Workout workout, Diet diet) {
+			int otp, Workout workout, Diet diet, LocalDateTime timestamp) {
 		super();
 		this.userid = userid;
 		this.firstname = firstname;
@@ -100,6 +127,7 @@ public class User {
 		this.otp = otp;
 		this.workout = workout;
 		this.diet = diet;
+		this.timestamp = timestamp;
 	}
 	public User() {
 		super();

@@ -11,12 +11,12 @@
 
 <body>
     <nav>
-        <div class="heading"><a href="index.html"><img src="asset\images\JollyLogo.png" height="50px"></a></div>
+        <div class="heading"><a href="index.html"><img src="/asset/images/JollyLogo.png" height="50px"></a></div>
 
 
         <div class="navbar">
             <ul>
-                <li><a href="home.html">Home</a></li>
+                <li><a th:href="/home">Home</a></li>
                 <li><a href="#">My Diary</a></li>
                 <li><a href="#">Leaderboard</a></li>
                 <li><a href="#">About</a></li>
@@ -25,14 +25,69 @@
         </div>
     </nav>
     <h1>Jolly</h1>
-    <div class="logs">
-        <h3>Workout</h3>
-        <span class="WorkoutLogs">
-            <button id="playHappyJolly">Add to log</button>
-        </span>
-        <h3>Diet Logs</h3>
-        <button>Add to log</button>
+    
+    
+<div class="container">
+    <h2>Search Workouts and Diets</h2>
+
+    <!-- Search Form -->
+    <form method="GET" action="/home">
+        <h2>Workouts</h2>
+        <label for="workoutname">Workout Name:</label>
+        <input type="text" id="workoutname" name="workoutname" placeholder="Search by workout name" />
+
+        <label for="muscle">Muscle Group:</label>
+        <input type="text" id="muscle" name="muscle" placeholder="Search by muscle group" />
+
+        <h2>Diets</h2>
+        <label for="dietname">Diet Name:</label>
+        <input type="text" id="dietname" name="dietname" placeholder="Search by diet name" />
+
+        <label for="calories">Calories:</label>
+        <input type="number" id="calories" name="calories" placeholder="Search by calories" />
+
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Display Workouts Search Results -->
+    <div class="result" th:if="${workouts != null}">
+        <h2>Workout Results:</h2>
+        <div th:each="workout : ${workouts}" class="result-item">
+            <h3 th:text="${workout.workoutname}">Workout Name</h3>
+            <p><strong>Type:</strong> <span th:text="${workout.workouttype}">Workout Type</span></p>
+            <p><strong>Muscle:</strong> <span th:text="${workout.muscle}">Muscle Group</span></p>
+            <p><strong>Equipment:</strong> <span th:text="${workout.equipment}">Equipment</span></p>
+            <p><strong>Difficulty:</strong> <span th:text="${workout.difficulty}">Difficulty Level</span></p>
+        </div>
     </div>
+
+    <!-- Display Diet Search Results -->
+    <div class="result" th:if="${diets != null}">
+        <h2>Diet Results:</h2>
+        <div th:each="diet : ${diets}" class="result-item">
+            <h3 th:text="${diet.dietname}">Diet Name</h3>
+            <p><strong>Calories:</strong> <span th:text="${diet.calories}">Calories</span></p>
+            <p><strong>Serving Size (g):</strong> <span th:text="${diet.serving}">Serving Size</span></p>
+            <p><strong>Fats:</strong> <span th:text="${diet.fats}">Fats</span></p>
+            <p><strong>Saturated Fats:</strong> <span th:text="${diet.saturatedfats}">Saturated Fats</span></p>
+            <p><strong>Protein:</strong> <span th:text="${diet.protein}">Protein</span></p>
+            <p><strong>Sodium:</strong> <span th:text="${diet.sodium}">Sodium</span></p>
+            <p><strong>Potassium:</strong> <span th:text="${diet.potassium}">Potassium</span></p>
+            <p><strong>Cholesterol:</strong> <span th:text="${diet.cholestrol}">Cholesterol</span></p>
+            <p><strong>Carbohydrates:</strong> <span th:text="${diet.carbs}">Carbohydrates</span></p>
+            <p><strong>Fiber:</strong> <span th:text="${diet.fibre}">Fiber</span></p>
+            <p><strong>Sugar:</strong> <span th:text="${diet.sugar}">Sugar</span></p>
+        </div>
+    </div>
+
+    <!-- No results found message -->
+    <div th:if="${#lists.isEmpty(workouts) and #lists.isEmpty(diets)}">
+        <p>No workouts or diets found for your search.</p>
+    </div>
+</div>
+
+
+    
     <div class="jolly">
         <iframe src='https://my.spline.design/jollyfoxhome-ef06bf76125fecf17b1012be6acbf4cf/' frameborder='0'
             width='700px' height='700px'>
@@ -52,20 +107,7 @@
             height='700px'></iframe>
     </div>
 
-    <div class="Logs History">
-        <table>
-            <tr>
-                <th>Date</th>
-                <th>Workout</th>
-                <th>Diet</th>
-            </tr>
-            <tr th:each="user:${user}">
-                <th th.text="${user.date}"></th>
-                <th th.text="${user.workout}"></th>
-                <th th.text="${user.diet}">
-            </tr>
-        </table>
-    </div>
+    
     <script src="home.js"></script>
 </body>
 
