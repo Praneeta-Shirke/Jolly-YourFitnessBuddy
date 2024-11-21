@@ -18,8 +18,8 @@ public class User {
 	private String firstname;
 	private String lastname;
 	private String gmail;
-	private String weight;
-	private String height;
+	private float weight;
+	private float height;
 	private String goal;
 	@Transient
 	private int otp;
@@ -71,16 +71,16 @@ public class User {
 	public void setGmail(String gmail) {
 		this.gmail = gmail;
 	}
-	public String getWeight() {
+	public float getWeight() {
 		return weight;
 	}
-	public void setWeight(String weight) {
+	public void setWeight(float weight) {
 		this.weight = weight;
 	}
-	public String getHeight() {
+	public float getHeight() {
 		return height;
 	}
-	public void setHeight(String height) {
+	public void setHeight(float height) {
 		this.height = height;
 	}
 	public String getGoal() {
@@ -114,7 +114,7 @@ public class User {
 				+ ", weight=" + weight + ", height=" + height + ", goal=" + goal + ", otp=" + otp + ", workout="
 				+ workout + ", diet=" + diet + ", timestamp=" + timestamp + "]";
 	}
-	public User(int userid, String firstname, String lastname, String gmail, String weight, String height, String goal,
+	public User(int userid, String firstname, String lastname, String gmail, float weight, float height, String goal,
 			int otp, Workout workout, Diet diet, LocalDateTime timestamp) {
 		super();
 		this.userid = userid;

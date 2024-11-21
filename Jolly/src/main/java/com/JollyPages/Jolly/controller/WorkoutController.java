@@ -1,6 +1,7 @@
 package com.JollyPages.Jolly.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +21,11 @@ public class WorkoutController {
 	    private final WorkoutService workoutService;
 
 	    @Autowired
-	    public WorkoutController(DietService dietService, WorkoutService workoutService) {
+	    public WorkoutController(@Qualifier("dietbean") DietService dietService,@Qualifier("workoutbean") WorkoutService workoutService) {
 	        this.dietService = dietService;
 	        this.workoutService = workoutService;
 	    }
 
-	    // Handle GET request to search workouts by name
 	    @GetMapping("/home")
 	    public String search(@RequestParam(value = "workoutname", required = false) String workoutname, @RequestParam(value = "muscle", required = false) String muscle,@RequestParam(value = "dietname", required = false) String dietname,Model model) {
 

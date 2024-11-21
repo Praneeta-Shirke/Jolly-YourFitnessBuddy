@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.JollyPages.Jolly.entities.Diet;
 import com.JollyPages.Jolly.repositories.DietRepository;
 
-@Service
+@Service("dietbean")
 public class DietService {
 
 	@Autowired

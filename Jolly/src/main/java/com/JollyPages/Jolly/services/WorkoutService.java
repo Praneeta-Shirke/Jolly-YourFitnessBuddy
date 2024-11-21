@@ -8,7 +8,7 @@ import com.JollyPages.Jolly.repositories.WorkoutRepository;
 
 import java.util.List;
 
-@Service
+@Service("workoutbean")
 public class WorkoutService {
 
     private final WorkoutRepository workoutRepository;
