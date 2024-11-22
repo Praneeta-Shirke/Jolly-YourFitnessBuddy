@@ -17,6 +17,7 @@ public class User {
 	private int userid;
 	private String firstname;
 	private String lastname;
+	private String password;
 	private String gmail;
 	private String weight;
 	private String height;
@@ -33,6 +34,15 @@ public class User {
         this.timestamp = LocalDateTime.now(); // Automatically set the timestamp before insert
     }
 	
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
 	private LocalDateTime timestamp;
 	
 	public int getUserid() {
@@ -108,18 +118,22 @@ public class User {
 		this.diet = diet;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "User [userid=" + userid + ", firstname=" + firstname + ", lastname=" + lastname + ", gmail=" + gmail
-				+ ", weight=" + weight + ", height=" + height + ", goal=" + goal + ", otp=" + otp + ", workout="
-				+ workout + ", diet=" + diet + ", timestamp=" + timestamp + "]";
+		return "User [userid=" + userid + ", firstname=" + firstname + ", lastname=" + lastname + ", password="
+				+ password + ", gmail=" + gmail + ", weight=" + weight + ", height=" + height + ", goal=" + goal
+				+ ", otp=" + otp + ", workout=" + workout + ", diet=" + diet + ", timestamp=" + timestamp + "]";
 	}
-	public User(int userid, String firstname, String lastname, String gmail, String weight, String height, String goal,
-			int otp, Workout workout, Diet diet, LocalDateTime timestamp) {
+
+
+	public User(int userid, String firstname, String lastname, String password, String gmail, String weight,
+			String height, String goal, int otp, Workout workout, Diet diet, LocalDateTime timestamp) {
 		super();
 		this.userid = userid;
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.password = password;
 		this.gmail = gmail;
 		this.weight = weight;
 		this.height = height;
@@ -129,6 +143,8 @@ public class User {
 		this.diet = diet;
 		this.timestamp = timestamp;
 	}
+
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub

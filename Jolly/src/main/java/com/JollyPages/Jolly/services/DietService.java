@@ -14,8 +14,5 @@ public class DietService {
 	@Autowired
 	private DietRepository dietRepository;
 
-	public List<Diet> searchDiet(String dietname) {
-		return dietRepository.findByDietNameContainingIgnoreCase(dietname);
-	}
 
 }

@@ -17,14 +17,4 @@ public class WorkoutService {
     public WorkoutService(WorkoutRepository workoutRepository) {
         this.workoutRepository = workoutRepository;
     }
-
-    // Method to search workouts by name
-    public List<Workout> searchByName(String workoutname) {
-        return workoutRepository.findByWorkoutnameContaining(workoutname);
-    }
-
-    // Method to search workouts by muscle
-    public List<Workout> searchByMuscle(String muscle) {
-        return workoutRepository.findByMuscleContaining(muscle);
-    }
 }

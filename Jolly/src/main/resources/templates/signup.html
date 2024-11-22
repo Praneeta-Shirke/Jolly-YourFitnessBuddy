@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Jolly Signup</title>
+<link rel="stylesheet" th:href="@{/css/signup.css}">
+</head>
+<body>
+    <header>
+        <h1 class="heading"><img src="asset\images\JollyLogo.png" height="70px"></h1>
+        <h3 class="title">Don't have an account?? Sign up now!</h3>
+    </header>
+
+    <!-- container div -->
+    <div class="container">
+
+        <!-- upper button section to select
+             the login or signup form -->
+        <div class="slider"></div>
+        <div class="btn">
+            <button class="login">Login</button>
+            <button class="signup">Signup</button>
+        </div>
+
+        <div class="form-section">
+
+            <!-- <!-- login form 
+            <div class="login-box">
+            <form th:action="${/login}" method = "post">
+                <input type="email" 
+                       class="email ele" 
+                       placeholder="youremail@email.com">
+                <input type="password"
+                       class="password ele" 
+                       placeholder="password">
+                <button class="clkbtn">Login</button>
+              </form>
+            </div> -->
+
+            <!-- signup form -->
+            <div class="signup-box">
+            <form th:action="@{/signup}" method="post" th.object="${user}">
+                <input type="text" 
+                       class="name ele" 
+                       placeholder="Enter your firstname" th:feild="*{firstname}">
+                <input type="text" 
+                       class="name ele" 
+                       placeholder="Enter your lastname" th:feild="*{lastname}">
+                <input type="email" 
+                       class="email ele" 
+                       placeholder="youremail@email.com" th:feild="*{gmail}">
+                <input type="text" 
+                       class="name ele" 
+                       placeholder="Enter your height" th:feild="*{height}">
+                <input type="number" 
+                       class="name ele" 
+                       placeholder="Enter your weight" th:feild="*{weight}">
+                <input type="text" 
+                       class="password ele" 
+                       placeholder="password" th:feild="*{password}">
+                
+                <button class="clkbtn">Signup</button>
+            </form>
+            </div>
+        </div>
+    </div>
+    <script src="/js/signup.js"></script>
+
+</body>
+</html>
