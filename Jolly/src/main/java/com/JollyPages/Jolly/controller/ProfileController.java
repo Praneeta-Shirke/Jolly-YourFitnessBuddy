@@ -32,27 +32,26 @@ public class ProfileController {
 	    System.out.println("User: " + user.getFirstname());
 	    System.out.println("Email: " + user.getGmail());
 		userservice.saveUser(user);
-		return "redirect:/login";
+		return "redirect:/signup";
 	}
 	@GetMapping("/login")
 	public String loginform() {
-		return "login";
+		return "signup";
 	}
 	@PostMapping("/login")
 	public String handleSignup(@ModelAttribute("user") @RequestParam("gmail") String gmail, @RequestParam("password") String ps, Model model) {
 			
 		user = userservice.findByGmail(gmail);
 
-//	    if (user == null) {
-//	        model.addAttribute("error", "Email not registered");
-//	        return "login";
-//	    }
+		if (gmail == null || gmail.isEmpty() || ps == null || ps.isEmpty()) {
+	        model.addAttribute("error", "Please fill out all fields");
+	        return "redirect:/signup"; 
+	    }
 
 	    if (ps.equals(user.getPassword())) {
 	        return "redirect:/";
 	    } else {
-	        model.addAttribute("error", "Invalid username or password");
-	        return "login";
+	        return "redirect:/signup";
 	    }
 	}
 }
