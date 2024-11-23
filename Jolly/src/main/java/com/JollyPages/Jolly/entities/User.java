@@ -127,9 +127,7 @@ public class User {
 	}
 
 
-	public User(int userid, String firstname, String lastname, String password, String gmail, String weight,
-			String height, String goal, int otp, Workout workout, Diet diet, LocalDateTime timestamp) {
-
+	
 	public User(int userid, String firstname,String password, String lastname, String gmail, float weight, float height, String goal,
 			int otp, Workout workout, Diet diet, LocalDateTime timestamp) {
 		super();

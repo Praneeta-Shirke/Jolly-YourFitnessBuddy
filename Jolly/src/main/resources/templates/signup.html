@@ -39,25 +39,25 @@
 
             <!-- signup form -->
             <div class="signup-box">
-            <form th:action="@{/signup}" method="post" th.object="${user}">
+            <form th:action="@{/signup}" method="post" th:object="${user}">
                 <input type="text" 
                        class="name ele" 
-                       placeholder="Enter your firstname" th:feild="*{firstname}">
+                       placeholder="Enter your firstname" th:field="*{firstname}">
                 <input type="text" 
                        class="name ele" 
-                       placeholder="Enter your lastname" th:feild="*{lastname}">
+                       placeholder="Enter your lastname" th:field="*{lastname}">
                 <input type="email" 
                        class="email ele" 
-                       placeholder="youremail@email.com" th:feild="*{gmail}">
-                <input type="text" 
-                       class="name ele" 
-                       placeholder="Enter your height" th:feild="*{height}">
+                       placeholder="youremail@email.com" th:field="*{gmail}">
                 <input type="number" 
                        class="name ele" 
-                       placeholder="Enter your weight" th:feild="*{weight}">
+                       placeholder="Enter your height" th:field="*{height}">
+                <input type="number" 
+                       class="name ele" 
+                       placeholder="Enter your weight" th:field="*{weight}">
                 <input type="text" 
                        class="password ele" 
-                       placeholder="password" th:feild="*{password}">
+                       placeholder="password" th:field="*{password}">
                 
                 <button class="clkbtn">Signup</button>
             </form>

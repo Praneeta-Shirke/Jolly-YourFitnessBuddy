@@ -18,6 +18,10 @@ public class UserService {
 		return userRepository.save(user);
 	}
 	
+	public User findByGmail(String gmail) {
+        return userRepository.findByGmail(gmail);
+    }
+	
 	public List<User> getAllUsers(){
 		return userRepository.findAll();
 	}

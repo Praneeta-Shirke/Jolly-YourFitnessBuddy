@@ -1,19 +1,12 @@
 package com.JollyPages.Jolly.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;
-
 import com.JollyPages.Jolly.entities.User;
-import com.JollyPages.Jolly.services.UserService;
-
-import com.JollyPages.Jolly.entities.User;
-import com.JollyPages.Jolly.services.OtpService;
 import com.JollyPages.Jolly.services.UserService;
 
 
@@ -30,13 +23,14 @@ public class ProfileController {
 	@GetMapping("/signup")
 	public String userSignup(Model model) {
 		model.addAttribute("user",new User());
-		System.out.println("Gmail : "+user.getGmail());
-		System.out.println("password : "+user.getPassword());
 		return "signup";
 	}
 	
 	@PostMapping("/signup")
 	public String setUser(@ModelAttribute("user") User user) {
+
+	    System.out.println("User: " + user.getFirstname());
+	    System.out.println("Email: " + user.getGmail());
 		userservice.saveUser(user);
 		return "redirect:/login";
 	}
@@ -45,16 +39,21 @@ public class ProfileController {
 		return "login";
 	}
 	@PostMapping("/login")
-	public String handleSignup(@RequestParam("gmail") String us, @RequestParam("password") String ps, Model model) {
+	public String handleSignup(@ModelAttribute("user") @RequestParam("gmail") String gmail, @RequestParam("password") String ps, Model model) {
 			
-			String gmail = user.getGmail();
-			String password = user.getPassword();
-			if(us.equals(gmail)&&ps.equals(password)) {
-				return "redirect:/Home";
-			}else {
-				model.addAttribute("error","Invalid username or password");
-				return "signup";
-			}
+		user = userservice.findByGmail(gmail);
+
+//	    if (user == null) {
+//	        model.addAttribute("error", "Email not registered");
+//	        return "login";
+//	    }
+
+	    if (ps.equals(user.getPassword())) {
+	        return "redirect:/";
+	    } else {
+	        model.addAttribute("error", "Invalid username or password");
+	        return "login";
+	    }
 	}
 }
 
