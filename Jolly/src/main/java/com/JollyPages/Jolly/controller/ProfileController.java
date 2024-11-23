@@ -1,5 +1,6 @@
 package com.JollyPages.Jolly.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.JollyPages.Jolly.entities.User;
 import com.JollyPages.Jolly.services.UserService;
+
+import com.JollyPages.Jolly.entities.User;
+import com.JollyPages.Jolly.services.OtpService;
+import com.JollyPages.Jolly.services.UserService;
+
+
 
 @Controller
 public class ProfileController {
@@ -23,11 +30,13 @@ public class ProfileController {
 	@GetMapping("/signup")
 	public String userSignup(Model model) {
 		model.addAttribute("user",new User());
+		System.out.println("Gmail : "+user.getGmail());
+		System.out.println("password : "+user.getPassword());
 		return "signup";
 	}
 	
 	@PostMapping("/signup")
-	public String setUser(@ModelAttribute User user) {
+	public String setUser(@ModelAttribute("user") User user) {
 		userservice.saveUser(user);
 		return "redirect:/login";
 	}
@@ -47,7 +56,5 @@ public class ProfileController {
 				return "signup";
 			}
 	}
-	
-
-
 }
+

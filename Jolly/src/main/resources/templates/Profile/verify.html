@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <nav>
+        <div class="heading"><a href="index.html"><img src="/asset/images/JollyLogo.png" height="50px"></a></div>
+
+
+        <div class="navbar">
+            <ul>
+                <li><a th:href="/home">Home</a></li>
+                <li><a href="#">My Diary</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1>Jolly</h1>
+    
+	<h1>Verify OTP</h1>
+    <form th:action="@{/verifyOTP}" th:object="${user}" method="post">
+        <label>Enter OTP:</label>
+        <input type="number" name="enteredOtp" required /><br>
+        <input type="hidden" th:field="*{firstname}" />
+        <input type="hidden" th:field="*{lastname}" />
+        <input type="hidden" th:field="*{gmail}" />
+        <input type="hidden" th:field="*{weight}" />
+        <input type="hidden" th:field="*{height}" />
+        <input type="hidden" th:field="*{goal}" />
+        <button type="submit">Verify OTP</button>
+    </form>
+    <p th:if="${error}" th:text="${error}"></p>
+</body>
+</html>
