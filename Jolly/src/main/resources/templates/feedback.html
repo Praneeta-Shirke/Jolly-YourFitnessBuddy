@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Jolly Feedback</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/feedback.css}">
+</head>
+<body>
+
+	<nav>
+		<div class="heading">
+			<a href="index.html"><a href="index.html"><img
+					src="asset\images\JollyLogo.png" height="50px"></a>
+		</div>
+
+		<div class="navbar">
+			<ul>
+				<li><a href="/home">Home</a></li>
+				<li><a href="/diary">My Diary</a></li>
+				<li><a href="/diary">Leaderboard</a></li>
+				<li><a href="/about">About</a></li>
+				<li><img src="asset\images\JollyProfile.png" onClick="toggleMenu()"></li>
+			</ul>
+			<div class="sub-menu-wrap" id="subMenu">
+				<div class="sub-menu">
+					<div class="userinfo">
+						<img src="asset\images\JollyProfile.png">
+						<h3>Username</h3>
+					</div>
+					<hr>
+					<a href="#" class="sub-menu-link"> <img
+						src="asset\images\EditProfileLogo.png">
+						<p>Edit Profile</p> <span>></span>
+					</a> <a href="#" class="sub-menu-link"> <img
+						src="asset\images\SettingsLogo.png">
+						<p>Settings and privacy</p> <span>></span>
+					</a> <a href="#" class="sub-menu-link"> <img
+						src="asset\images\HelpLogo.png">
+						<p>Help and Support</p> <span>></span>
+					</a> <a href="#" class="sub-menu-link"> <img
+						src="asset\images\LogOutLogo.png">
+						<p>Log out!</p> <span>></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="form-box">
+		<div class="textup">
+			<i class="fa fa-solid fa-clock"></i> It only takes two minutes!!
+		</div>
+		<form method="post">
+			<label for="uname"> <i class="fa fa-solid fa-user"></i> Name
+			</label> <input type="text" id="uname" name="uname" required> <label
+				for="email"> <i class="fa fa-solid fa-envelope"></i> Email
+				Address
+			</label> <input type="email" id="email" name="email" required> <label
+				for="phone"> <i class="fa-solid fa-phone"></i> Phone No
+			</label> <input type="tel" id="phone" name="phone" required> <label>
+				<i class="fa-solid fa-face-smile"></i> Do you satisfy with our
+				service?
+			</label>
+			<div class="radio-group">
+				<input type="radio" id="yes" name="satisfy" value="yes" checked>
+				<label for="yes">Yes</label> <input type="radio" id="no"
+					name="satisfy" value="no"> <label for="no">No</label>
+			</div>
+
+			<label for="msg"> <i class="fa-solid fa-comments"
+				style="margin-right: 3px;"></i> Write your Suggestions:
+			</label>
+			<textarea id="msg" name="msg" rows="4" cols="10" required>
+            </textarea>
+			<button type="submit">Submit</button>
+		</form>
+	</div>
+	<script>
+		let subMenu = document.getElementById("subMenu");
+		function toggleMenu() {
+			subMenu.classList.toggle("open-menu");
+		}
+	</script>
+</body>
+</html>

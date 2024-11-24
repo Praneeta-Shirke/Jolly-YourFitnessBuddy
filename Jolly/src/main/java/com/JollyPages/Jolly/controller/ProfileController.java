@@ -54,5 +54,10 @@ public class ProfileController {
 	        return "redirect:/signup";
 	    }
 	}
+	
+	@GetMapping("/feedback")
+	public String getUserFeedback() {
+		return "feedback";
+	}
 }
 
