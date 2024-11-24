@@ -2,32 +2,56 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/index.css}">
-    <title>Jolly - Your Fitness Buddy</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" th:href="@{/css/index.css}">
+<title>Jolly - Your Fitness Buddy</title>
 </head>
 
 <body>
-    <nav>
-        <div class="heading"><a href="index.html"><a href="index.html"><img src="asset\images\JollyLogo.png" height="50px"></a></div>
-        <span class="sideMenuButton" onclick="openNavbar()">
+	<nav>
+		<div class="heading">
+			<a href="index.html"><a href="index.html"><img
+					src="asset\images\JollyLogo.png" height="50px"></a>
+		</div>
+		<!-- <span class="sideMenuButton" onclick="openNavbar()">
             &#9776
-        </span>
+        </span> -->
 
-        <div class="navbar">
-            <ul>
-                <li><a href="/home">Home</a></li>
-                <li><a href="/diary">My Diary</a></li>
-                <li><a href="/diary">Leaderboard</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/profile">Profile</a></li>
-            </ul>
-        </div>
-    </nav>
+		<div class="navbar">
+			<ul>
+				<li><a href="/home">Home</a></li>
+				<li><a href="/diary">My Diary</a></li>
+				<li><a href="/diary">Leaderboard</a></li>
+				<li><a href="/about">About</a></li>
+				<li><img src="/asset/images/JollyProfile.png" onClick="toggleMenu()"></li>
+			</ul>
+			<div class="sub-menu-wrap" id="subMenu">
+				<div class="sub-menu">
+					<div class="userinfo">
+						<h2>Username</h2>
+					</div>
+					<hr>
+					<a href="#" class="sub-menu-link"> <img
+						src="/asset/images/EditProfileLogo.png">
+						<p>Edit Profile</p> <span>></span>
+					</a> <a href="#" class="sub-menu-link"> <img
+						src="/asset/images/SettingsLogo.png">
+						<p>Settings and privacy</p> <span>></span>
+					</a> <a href="#" class="sub-menu-link"> <img
+						src="/asset/images/HelpLogo.png">
+						<p>Help and Support</p> <span>></span>
+					</a> <a href="#" class="sub-menu-link"> <img
+						src="/asset/images/LogOutLogo.png">
+						<p>Log out!</p> <span>></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
 
-    <!-- <!-- Side navigation bar for 
+	<!-- <!-- Side navigation bar for 
         responsive website 
     <div class="sideNavigationBar" id="sideNavigationBar">
         <a href="#" class="closeButton" onclick="closeNavbar()">
@@ -40,67 +64,57 @@
         <a href="#">Sign Up</a>
     </div> -->
 
-    <!-- Content -->
-    <div class="line" id="Home">
-        <div class="side1">
-            <h1>Jolly <br> Your Fitness Buddy</h1>
-            <button>
-                <a href="About.html">
-                    Explore More
-                </a>
-            </button>
-        </div>
-        <div class="side2">
-            <iframe src='https://my.spline.design/jollyfoxhome-ef06bf76125fecf17b1012be6acbf4cf/' frameborder='0' width='700px' height='700px'></iframe>
-        </div>
-    </div>
+	<!-- Content -->
+	<div class="line" id="Home">
+		<div class="side1">
+			<h1>
+				Jolly <br> Your Fitness Buddy
+			</h1>
+			<button>
+				<a href="About.html"> Explore More </a>
+			</button>
+		</div>
+		<div class="side2">
+			<iframe
+				src='https://my.spline.design/jollyfoxhome-ef06bf76125fecf17b1012be6acbf4cf/'
+				frameborder='0' width='700px' height='700px'></iframe>
+		</div>
+	</div>
 
-    <section class="about" id="My Projects">
-        <div class="content">
-            <div class="title">
-                <span>Features</span>
-            </div>
-            <div class="boxes">
-                <div class="box">
-                    <div class="topic">
-                        <label>
-                            Workout/diet Logs
-                        </label>
-                    </div>
-                    <p>
-                        We bring workout and diet logs for you to choose from and to keep a daily record of it.
-                    </p>
-                </div>
-                <div class="box">
+	<section class="about" id="My Projects">
+		<div class="content">
+			<div class="title">
+				<span>Features</span>
+			</div>
+			<div class="boxes">
+				<div class="box">
+					<div class="topic">
+						<label> Workout/diet Logs </label>
+					</div>
+					<p>We bring workout and diet logs for you to choose from and to
+						keep a daily record of it.</p>
+				</div>
+				<div class="box">
 
-                    <div class="topic">
-                        <label>
-                            Diary
-                        </label>
-                    </div>
-                    <p>
-                        We also provide you with a diary 
-                        where you can jot down your thoughts 
-                        or anything you want in general. Our diary feature also has a calender and a stopwatch.
-                    </p>
-                </div>
+					<div class="topic">
+						<label> Diary </label>
+					</div>
+					<p>We also provide you with a diary where you can jot down your
+						thoughts or anything you want in general. Our diary feature also
+						has a calender and a stopwatch.</p>
+				</div>
 
-                <div class="box">
-                    <div class="topic">
-                        <label>
-                            Leaderboard
-                        </label>
-                    </div>
-                    <p>
-                        See how our other users with similar interests are doing
-                        in leaderboad.
-                        Collect points and rank higher on the leader board.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- 
+				<div class="box">
+					<div class="topic">
+						<label> Leaderboard </label>
+					</div>
+					<p>See how our other users with similar interests are doing in
+						leaderboad. Collect points and rank higher on the leader board.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- 
     <section class="contact" id="contact">
         <div class="content">
             <div class="title"><span>Sign Up</span></div>
@@ -126,30 +140,32 @@
                         <button>Sign Up</button>
                     </div>
                 </div>-->
-                <div class="input3">
-                    <div class="rightside1">
-                        <div class="title1">
-                            <span>More Information</span>
-                        </div> 
-                        <div class="content1">
-                            Jolly is a fun and interactive fitness app that helps you track your fitness and your health goals.
-                            It's a one stop destination to maintain your physical and mental health.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Footer section -->
-    <footer>
-        <div class="footer">
-            <span>
-                <a href="" target="_blank">
-                </a>
-            </span>
-        </div>
-    </footer>
-    <script src="index.js"></script>
+	<div class="input3">
+		<div class="rightside1">
+			<div class="title1">
+				<span>More Information</span>
+			</div>
+			<div class="content1">Jolly is a fun and interactive fitness
+				app that helps you track your fitness and your health goals. It's a
+				one stop destination to maintain your physical and mental health.</div>
+		</div>
+	</div>
+	</div>
+	</div>
+	</section>
+	<!-- Footer section -->
+	<footer>
+		<div class="footer">
+			<span> <a href="" target="_blank"> </a>
+			</span>
+		</div>
+	</footer>
+	<script>
+		let subMenu = document.getElementById("subMenu");
+		function toggleMenu() {
+			subMenu.classList.toggle("open-menu");
+		}
+	</script>
 </body>
 
 </html>

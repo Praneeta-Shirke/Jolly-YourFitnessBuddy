@@ -1,4 +1,4 @@
-async function openNavbar() {
+/*async function openNavbar() {
   document.getElementById("sideNavigationBar").style.width = "50%";
 
   const url = "https://api.api-ninjas.com/v1/exercises?muscle=biceps";
@@ -20,3 +20,5 @@ async function openNavbar() {
 function closeNavbar() {
   document.getElementById("sideNavigationBar").style.width = "0%";
 }
+*/
+
