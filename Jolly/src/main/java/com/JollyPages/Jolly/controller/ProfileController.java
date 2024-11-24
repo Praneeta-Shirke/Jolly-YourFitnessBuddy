@@ -55,9 +55,6 @@ public class ProfileController {
 	    }
 	}
 	
-	@GetMapping("/feedback")
-	public String getUserFeedback() {
-		return "feedback";
-	}
+	
 }
 

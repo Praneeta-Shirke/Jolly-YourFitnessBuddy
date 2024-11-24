@@ -12,6 +12,7 @@ body {
     height: 100vh;
     background-color: purple;
     font-family: 'Poppins', sans-serif;
+    color:white;
 
 }
 .sub-menu-wrap{
@@ -202,6 +203,7 @@ button {
     background-image: linear-gradient(to right,
             #e200e2, rgb(108 1 108));
     font-size: 22px;
+    color:white;
     font-weight:500px;
     border: none;
     cursor: pointer;
