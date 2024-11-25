@@ -11,4 +11,5 @@ import com.JollyPages.Jolly.entities.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 	List<User> findAllByOrderByTimestampDesc();
 	User findByGmail(String gmail);
+//	List<User> findAllByPointsDesc(int points);
 }

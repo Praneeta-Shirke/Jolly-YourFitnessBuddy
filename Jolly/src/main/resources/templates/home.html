@@ -1,62 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jolly Fitness Logs</title>
-    <!-- Correctly reference CSS -->
-    <link rel="stylesheet" th:href="@{/css/home.css}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jolly Fitness Logs</title>
+<!-- Correctly reference CSS -->
+<link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 <body>
 	<nav>
-        <div class="navbar">
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="#">My Diary</a></li>
-                <li><a href="#">Leaderboard</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Sign Up</a></li>
-            </ul>
-        </div>
-    </nav>
-	
-    <div class="container">
-        <form action="/addLog" method="post">
-        	<h2>Fitness Tracker Logs</h2>
-        	<br>
-            <label>Choose a Workout : </label>
-            <select name="workoutId" required>
-                <option value="">Select a Workout</option>
-                <th:block th:each="workout : ${workouts}">
-                    <option th:value="${workout.id}" th:text="${workout.name}"></option>
-                </th:block>
-            </select>
-			<br><br>
-            <label>Choose a Nutrition Log</label>
-            <select name="nutritionId" required>
-                <option value="">Select a Nutrition Log</option>
-                <th:block th:each="log : ${nutritionLogs}">
-                    <option th:value="${log.id}" th:text="${log.description}"></option>
-                </th:block>
-            </select>
-			<br><br>
-            <button type="submit">Add Log</button>
-        </form>
-    </div>
-    <div class="JollyPlacement">
-    	<iframe src='https://my.spline.design/jollyfoxhome-ef06bf76125fecf17b1012be6acbf4cf/' frameborder='0' width='700' height='700'></iframe>
-    </div>
-    <div class="LogsHistory">
-    	<h2>History</h2>
-        <ul>
-            <th:block th:each="log : ${userLogs}">
-                <li>
-                    <span th:text="'Workout: ' + ${log.workoutName}"></span>,
-                    <span th:text="'Nutrition: ' + ${log.nutritionDescription}"></span>
-                    (<span th:text="${log.timestamp}"></span>)
-                </li>
-            </th:block>
-        </ul>
-    </div>
+		<div class="heading">
+			<a href="/"><img src="asset\images\JollyLogo.png" height="50px"></a>
+		</div>
+
+		<div class="navbar">
+			<ul>
+				<li><a href="/home">Home</a></li>
+				<li><a href="/diary">My Diary</a></li>
+				<li><a href="/diary">Leaderboard</a></li>
+				<li><a href="/about">About</a></li>
+				<li><img src="asset\images\JollyProfile.png"
+					onClick="toggleMenu()"></li>
+			</ul>
+			<div class="sub-menu-wrap" id="subMenu">
+				<div class="sub-menu">
+					<div class="userinfo">
+						<img src="asset\images\JollyProfile.png">
+						<h3>Username</h3>
+					</div>
+					<hr>
+					<a href="#" class="sub-menu-link"> <img
+						src="asset\images\EditProfileLogo.png">
+						<p>Edit Profile</p> <span>></span>
+					</a> <a href="#" class="sub-menu-link"> <img
+						src="asset\images\SettingsLogo.png">
+						<p>Settings and privacy</p> <span>></span>
+					</a> <a href="/feedback" class="sub-menu-link"> <img
+						src="asset\images\HelpLogo.png">
+						<p>Help and Support</p> <span>></span>
+					</a> <a href="/signup" class="sub-menu-link"> <img
+						src="asset\images\LogOutLogo.png">
+						<p>Log out!</p> <span>></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<form action="/addLog" method="post">
+			<h2>Fitness Tracker Logs</h2>
+			<br> <br> <br>
+			<form th:action="@{/home}" method="post">
+				<label>Choose a Nutrition Log :</label> <select name="dietId"
+					required>
+					<option value="">Select a Nutrition Log</option>
+					<th:block th:each="diet : ${diets}">
+					<option th:value="${diet.dietid}" th:text="${diet.dietname}"></option>
+					</th:block>
+				</select>
+				<br><br>
+				 <label>Choose a Workout Log : </label> <select name="workoutId"
+					required>
+					<option value="">Select a Workout</option>
+					<th:block th:each="workout : ${workouts}">
+					<option th:value="${workout.workoutid}" th:text="${workout.workoutname}"></option>
+					</th:block>
+				</select>
+			</form>
+			<br> <br>
+			<button type="submit">Add Log</button>
+		</form>
+	</div>
+	<div class="JollyPlacement">
+		<iframe
+			src='https://my.spline.design/jollyfoxhome-ef06bf76125fecf17b1012be6acbf4cf/'
+			frameborder='0' width='700' height='700'></iframe>
+	</div>
+	<div class="LogsHistory">
+		<h2>History Log</h2>
+    <table>
+    <thead>
+        <tr>
+            <th>Workout</th>
+            <th>Diet</th>
+            <th>Timestamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="log : ${logs}">
+            <td th:text="${log.workout.workoutname}"></td>
+            <td th:text="${log.diet.dietname}"></td>
+            <td th:text="${#dates.format(log.timestamp, 'dd-MM-yyyy HH:mm:ss')}"></td>
+        </tr>
+    </tbody>
+</table>
+	</div>
+	<script>
+		let subMenu = document.getElementById("subMenu");
+		function toggleMenu() {
+			subMenu.classList.toggle("open-menu");
+		}
+	</script>
 </body>
 </html>

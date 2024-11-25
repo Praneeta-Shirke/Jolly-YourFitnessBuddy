@@ -9,5 +9,7 @@ import com.JollyPages.Jolly.entities.Diet;
 
 @Repository
 public interface DietRepository extends JpaRepository<Diet, Integer> {
-	//List<Diet> findByDietNameContainingIgnoreCase(String dietname);
+//	List<Diet> findBydietnameContainingIgnoreCase(String dietname);
+	List<Diet> findBydietnameLike(String dietname);
+	
 }

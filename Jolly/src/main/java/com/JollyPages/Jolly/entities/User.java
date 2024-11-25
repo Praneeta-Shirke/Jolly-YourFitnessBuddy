@@ -30,6 +30,7 @@ public class User {
 	private Workout workout;
 	@ManyToOne
 	private Diet diet;
+	private int points;
 	
 	@PrePersist
     protected void onCreate() {
@@ -121,17 +122,20 @@ public class User {
 	}
 	
 	
-	@Override
-	public String toString() {
-		return "User [userid=" + userid + ", firstname=" + firstname + ", lastname=" + lastname + ", password="
-				+ password + ", gmail=" + gmail + ", weight=" + weight + ", height=" + height + ", goal=" + goal
-				+ ", otp=" + otp + ", workout=" + workout + ", diet=" + diet + ", timestamp=" + timestamp + "]";
+	public int getPoints() {
+		return points;
 	}
 
 
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
 	
-	public User(int userid, String firstname,String password, String lastname, String gmail, float weight, float height, String goal,
-			int otp, Workout workout, Diet diet, LocalDateTime timestamp) {
+
+
+	public User(int userid, String firstname, String lastname, String password, String gmail, float weight,
+			float height, String goal, int otp, Workout workout, Diet diet, int points, LocalDateTime timestamp) {
 		super();
 		this.userid = userid;
 		this.firstname = firstname;
@@ -144,7 +148,17 @@ public class User {
 		this.otp = otp;
 		this.workout = workout;
 		this.diet = diet;
+		this.points = points;
 		this.timestamp = timestamp;
+	}
+
+
+	@Override
+	public String toString() {
+		return "User [userid=" + userid + ", firstname=" + firstname + ", lastname=" + lastname + ", password="
+				+ password + ", gmail=" + gmail + ", weight=" + weight + ", height=" + height + ", goal=" + goal
+				+ ", otp=" + otp + ", workout=" + workout + ", diet=" + diet + ", points=" + points + ", timestamp="
+				+ timestamp + "]";
 	}
 
 

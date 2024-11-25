@@ -6,13 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.JollyPages.Jolly.entities.Diet;
+import com.JollyPages.Jolly.entities.Workout;
 import com.JollyPages.Jolly.repositories.DietRepository;
 
-@Service("dietbean")
+@Service
 public class DietService {
 
-	@Autowired
-	private DietRepository dietRepository;
+	 @Autowired
+	    private DietRepository dietRepository;
 
+	    public List<Diet> getAllDiets() {
+	        return dietRepository.findAll();
+	    }
 
+	    public Diet findById(int id) {
+	        return dietRepository.findById(id).orElse(null);
+	    }
 }

@@ -10,8 +10,6 @@ import com.JollyPages.Jolly.entities.Workout;
 @Repository
 public interface WorkoutRepository extends JpaRepository<Workout, Integer>{
 	// Search workouts by workout name
-    List<Workout> findByWorkoutnameContaining(String workoutname);
+    List<Workout> findByworkoutnameLike(String workoutname);
 
-    // Search workouts by muscle
-    List<Workout> findByMuscleContaining(String muscle);
 }
