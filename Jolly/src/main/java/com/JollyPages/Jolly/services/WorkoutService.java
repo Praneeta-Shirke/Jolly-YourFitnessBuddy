@@ -19,7 +19,4 @@ public class WorkoutService {
         return workoutRepository.findAll();
     }
 
-    public Workout findById(int id) {
-        return workoutRepository.findById(id).orElse(null);
-    }
 }

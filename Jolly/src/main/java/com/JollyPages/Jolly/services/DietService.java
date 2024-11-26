@@ -19,7 +19,5 @@ public class DietService {
 	        return dietRepository.findAll();
 	    }
 
-	    public Diet findById(int id) {
-	        return dietRepository.findById(id).orElse(null);
-	    }
+	    
 }
