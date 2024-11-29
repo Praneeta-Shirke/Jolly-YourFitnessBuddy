@@ -19,7 +19,7 @@ public class UserService {
 	}
 	
 	public User findByGmail(String gmail) {
-        return userRepository.findByGmail(gmail);
+        return (User) userRepository.findByGmail(gmail);
     }
 	
 	public List<User> getAllUsers(){

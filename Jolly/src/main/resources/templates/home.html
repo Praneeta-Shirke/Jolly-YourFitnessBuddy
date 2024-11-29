@@ -19,8 +19,7 @@
 				<li><a href="/diary">My Diary</a></li>
 				<li><a href="/diary">Leaderboard</a></li>
 				<li><a href="/about">About</a></li>
-				<li><img src="asset\images\JollyProfile.png"
-					onClick="toggleMenu()"></li>
+				<li><img src="asset\images\JollyProfile.png" onClick="toggleMenu()"></li>
 			</ul>
 			<div class="sub-menu-wrap" id="subMenu">
 				<div class="sub-menu">
@@ -38,7 +37,7 @@
 					</a> <a href="/feedback" class="sub-menu-link"> <img
 						src="asset\images\HelpLogo.png">
 						<p>Help and Support</p> <span>></span>
-					</a> <a href="/signup" class="sub-menu-link"> <img
+					</a> <a href="/logout" class="sub-menu-link"> <img
 						src="asset\images\LogOutLogo.png">
 						<p>Log out!</p> <span>></span>
 					</a>
@@ -56,20 +55,20 @@
 					required>
 					<option value="">Select a Nutrition Log</option>
 					<th:block th:each="diet : ${diets}">
-					<option th:value="${diet.dietid}" th:text="${diet.dietname}"></option>
+						<option th:value="${diet.dietid}" th:text="${diet.dietname}"></option>
 					</th:block>
-				</select>
-				<br><br>
-				 <label>Choose a Workout Log : </label> <select name="workoutId"
-					required>
+				</select> <br>
+				<br> <label>Choose a Workout Log : </label> <select
+					name="workoutId" required>
 					<option value="">Select a Workout</option>
 					<th:block th:each="workout : ${workouts}">
-					<option th:value="${workout.workoutid}" th:text="${workout.workoutname}"></option>
+						<option th:value="${workout.workoutid}"
+							th:text="${workout.workoutname}"></option>
 					</th:block>
 				</select>
 			</form>
 			<br> <br>
-			<button type="submit">Add Log</button>
+			<button type="submit" id="HappyJolly">Add Log</button>
 		</form>
 	</div>
 	<div class="JollyPlacement">
@@ -79,28 +78,50 @@
 	</div>
 	<div class="LogsHistory">
 		<h2>History Log</h2>
-    <table>
-    <thead>
-        <tr>
-            <th>Workout</th>
-            <th>Diet</th>
-            <th>Timestamp</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="log : ${logs}">
-            <td th:text="${log.workout.workoutname}"></td>
-            <td th:text="${log.diet.dietname}"></td>
-            <td th:text="${#dates.format(log.timestamp, 'dd-MM-yyyy HH:mm:ss')}"></td>
-        </tr>
-    </tbody>
-</table>
+		<table>
+			<thead>
+				<tr>
+					<th>Workout</th>
+					<th>Diet</th>
+					<th>Timestamp</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="log : ${logs}">
+					<td th:text="${log.workout.workoutname}"></td>
+					<td th:text="${log.diet.dietname}"></td>
+					<td
+						th:text="${#dates.format(log.timestamp, 'dd-MM-yyyy HH:mm:ss')}"></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<script>
-		let subMenu = document.getElementById("subMenu");
-		function toggleMenu() {
-			subMenu.classList.toggle("open-menu");
-		}
+	let subMenu = document.getElementById("subMenu");
+	function toggleMenu() {
+		subMenu.classList.toggle("open-menu");
+	}
+	document.getElementById('HappyJolly').addEventListener('click', function (event) {
+		  event.preventDefault(); // Prevent form submission
+		  const container = document.querySelector('.JollyPlacement');
+
+		  // Check if iframe already exists
+		  const existingIframe = container.querySelector('iframe');
+
+		  if (existingIframe) {
+		    // Remove iframe if it exists
+		    container.removeChild(existingIframe);
+		  } else {
+		    // Create and add iframe if it doesn't exist
+		    const iframe = document.createElement('iframe');
+		    iframe.src = "https://my.spline.design/jollyfoxhappy-6a8f9487f9dcc0c5cc3903fb245dfee9/";
+		    iframe.width = "700";
+		    iframe.height = "700";
+		    iframe.style.border = "1px solid black";
+		    container.appendChild(iframe);
+		  }
+		});
+
 	</script>
 </body>
 </html>

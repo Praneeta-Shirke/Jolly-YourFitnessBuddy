@@ -257,6 +257,8 @@ form select{
 	 background-image: linear-gradient(to right,
             #e200e2, rgb(108 1 108));
 	width:200px;
+	border-radius:20px;
+	text-align:center;
 	height:35px;
 }
 
