@@ -1,0 +1,135 @@
+<DOCTYPE html>
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Leader Board</title>
+<link rel="stylesheet" href="css/leader.css">
+</head>
+<body>
+	<nav>
+		<div class="heading">
+			<a href="/"><img src="asset\images\JollyLogo.png" height="50px"></a>
+		</div>
+
+		<div class="navbar">
+			<ul>
+				<li><a href="/home">Home</a></li>
+				<li><a href="/diary">My Diary</a></li>
+				<li><a href="/leaderboard">Leaderboard</a></li>
+				<li><a href="/about">About</a></li>
+				<li><img src="asset\images\JollyProfile.png"
+					onClick="toggleMenu()"></li>
+			</ul>
+			<div class="sub-menu-wrap" id="subMenu">
+				<div class="sub-menu">
+					<div class="userinfo">
+						<img src="asset\images\JollyProfile.png">
+						<h3>Username</h3>
+					</div>
+					<hr>
+					<a href="#" class="sub-menu-link"> <img
+						src="asset\images\EditProfileLogo.png">
+						<p>Edit Profile</p> <span>></span>
+					</a> <a href="#" class="sub-menu-link"> <img
+						src="asset\images\SettingsLogo.png">
+						<p>Settings and privacy</p> <span>></span>
+					</a> <a href="/feedback" class="sub-menu-link"> <img
+						src="asset\images\HelpLogo.png">
+						<p>Help and Support</p> <span>></span>
+					</a> <a href="/logout" class="sub-menu-link"> <img
+						src="asset\images\LogOutLogo.png">
+						<p>Log out!</p> <span>></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="wrapper">
+		<div class="lboard_section">
+			<div class="lboard_tabs">
+				<div class="tabs">
+					<ul>
+						<li data-li="today">Today</li>
+						<li class="active" data-li="month">Month</li>
+						<li data-li="year">Year</li>
+					</ul>
+				</div>
+
+			</div>
+			<div class="lboard_wrap">
+				<div class="lboard_item today" style="display: none;">
+
+					<div class="name_bar" th:each="user, iterStat : ${users}">
+						<p>
+							<span th:text="${iterStat.index + 1}"></span>
+							<!-- Ranks users -->
+							<span th:text="${user.firstname}"></span>
+						</p>
+						<div class="bar_wrap">
+							<div class="inner_bar"
+								th:style="'width: ' + (${user.points} / 100) + '%;'"></div>
+							<!-- Bar width proportional to points -->
+						</div>
+					</div>
+
+					<div class="points">
+						<span th:text="${user.points}"></span>
+					</div>
+
+
+
+				</div>
+			</div>
+
+		</div>
+		<script src="/js/leader.js">
+			let subMenu = document.getElementById("subMenu");
+			function toggleMenu() {
+				subMenu.classList.toggle("open-menu");
+			}
+		</script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Leaderboard</title>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.firstname}">Name</td>
+                <td th:text="${user.points}">Points</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
+
+<table>
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Points</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="user : ${users}">
+											<td th:text="${user.firstname}">Name</td>
+                                <div class="inner_bar" th:style="'width:' + (${user.points} * 1.0 / 50) + '%;'"></div>
+											<td th:text="${user.points}">Points</td>
+										</tr>
+									</tbody>
+								</table>

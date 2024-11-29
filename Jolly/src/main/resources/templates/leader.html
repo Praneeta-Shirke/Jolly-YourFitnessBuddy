@@ -1,12 +1,12 @@
 <DOCTYPE html>
 <html lang="en" xmlns:th="http:/www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Leader Board</title>
-        <link rel="stylesheet" href="css/leader.css">
-    </head>
-    <body>
-<nav>
+<head>
+<meta charset="UTF-8">
+<title>Leader Board</title>
+<link rel="stylesheet" href="css/leader.css">
+</head>
+<body>
+	<nav>
 		<div class="heading">
 			<a href="/"><img src="asset\images\JollyLogo.png" height="50px"></a>
 		</div>
@@ -17,7 +17,8 @@
 				<li><a href="/diary">My Diary</a></li>
 				<li><a href="/leaderboard">Leaderboard</a></li>
 				<li><a href="/about">About</a></li>
-				<li><img src="asset\images\JollyProfile.png" onClick="toggleMenu()"></li>
+				<li><img src="asset\images\JollyProfile.png"
+					onClick="toggleMenu()"></li>
 			</ul>
 			<div class="sub-menu-wrap" id="subMenu">
 				<div class="sub-menu">
@@ -44,280 +45,118 @@
 		</div>
 	</nav>
 
-        <div class="wrapper">
-            <div class="lboard_section">
-                <div class="lboard_tabs">
-                    <div class="tabs">
-                        <ul>
-                            <li data-li="today">Today</li>
-                            <li class="active" data-li="month">Month</li>
-                            <li data-li="year">Year</li>
-                        </ul>
-                    </div>
-                     
-                </div>
-                <div class="lboard_wrap">
-                    <div class="lboard_item today" style="display:none;">
-                        
-                        <div class="lboard_mem">
-                            <div class="img">
-                                <img src="" >
-                            </div>
-                           
-                            <div class="name_bar">
-                            <p><span>1.</span>Akanksha Tarate</p>
-                            <div class="bar_wrap">
-                                <div class="inner_bar" style="width:95%"></div>
-                            </div>
-                           </div>
+	<div class="wrapper">
+		<div class="lboard_section">
+			<div class="lboard_tabs">
+				<div class="tabs">
+					<ul>
+						<li data-li="today">Today</li>
+						<li class="active" data-li="month">Month</li>
+						<li data-li="year">Forever</li>
+					</ul>
+				</div>
 
-                        <div class="points">
-                            195 points
-                        </div>
-                    </div>
+			</div>
+			<div class="lboard_wrap">
+				<div class="lboard_item today" style="display: none;">
+					<th:block th:each="log, iterStat : ${dailyRanking}">
+						<div class="lboard_mem">
+							<div class="img">
+								<img src="">
+							</div>
 
-                    
+							<div class="name_bar">
+								<p>
+									<th:block th:text="${iterStat.index + 1}"></th:block>
+									.
+									<th:block th:text="${log.user.firstname}"></th:block>
+									<th:block th:text="${log.user.lastname}"></th:block>
+								</p>
+								<div class="bar_wrap">
+									<div class="inner_bar"
+										th:style="'width:' + (${log.points} * 1.0 / 100) + '%;'"></div>
+								</div>
+							</div>
 
+							<div class="points">
+								<th:block th:text="${log.points}"></th:block>
+							</div>
+						</div>
+					</th:block>
 
-                    
-                        <div class="lboard_mem">
-                        <div class="name_bar">
-                            <p><span>2.</span>Praneeta Shirke</p>
-                            <div class="bar_wrap">
-                                <div class="inner_bar" style="width:80%"></div>
-                            </div>
-                        </div>
+				</div>
 
-                        <div class="points">
-                            180 points
-                        </div> 
-                        </div>
-                        
+				<div class="lboard_item month" style="display: block;">
+        <div th:if="${#lists.isEmpty(monthlyRankingg)}">No points recorded for today.</div>
 
-                        
-                            <div class="lboard_mem">
-                            <div class="name_bar">
-                                <p><span>3.</span>Alice Kaushik</p>
-                                <div class="bar_wrap">
-                                    <div class="inner_bar" style="width:60%"></div>
-                                </div>
-                            </div>
-    
-                            <div class="points">
-                                160 points
-                            </div>
-                        </div>
-                        
+					<div class="lboard_item today" style="display: block;">
+        			<div th:if="${#lists.isEmpty(dailyRanking)}">No points recorded for today.</div>
+						<th:block th:each="log, iterStat : ${dailyRanking}">
+							<div class="lboard_mem">
+								<div class="img">
+									<img src="">
+								</div>
 
-                        
-                            <div class="lboard_mem">
-                            <div class="name_bar">
-                                <p><span>4.</span>Alia bhatt</p>
-                                <div class="bar_wrap">
-                                    <div class="inner_bar" style="width:75%"></div>
-                                </div>
-                            </div>
-    
-                            <div class="points">
-                                175 points
-                            </div>
-                        </div>
-                        
+								<div class="name_bar">
+									<p>
+										<th:block th:text="${iterStat.index + 1}"></th:block>
+										.
+										<th:block th:text="${log.user.firstname}"></th:block>
+									</p>
+									<div class="bar_wrap">
+										<div class="inner_bar"
+											th:style="'width:' + (${log.points} * 1.0 / 100) + '%;'"></div>
+									</div>
+								</div>
 
-                        
-                            <div class="lboard_mem">
-                            <div class="name_bar">
-                                <p><span>5.</span>Aryan Khan</p>
-                                <div class="bar_wrap">
-                                    <div class="inner_bar" style="width:30%"></div>
-                                </div>
-                            </div>
-    
-                            <div class="points">
-                                130 points
-                            </div>
-                            </div>
-                            </div>
+								<div class="points">
+									<th:block th:text="${log.points}"></th:block>
+								</div>
+							</div>
+						</th:block>
 
-                            
-                        
+					</div>
+				</div>
+				<div class="lboard_item year" style="display: none;">
+					<th:block th:each="user, iterStat : ${users}">
+						<div class="lboard_mem">
+							<div class="img">
+								<img src="">
+							</div>
 
-                        
+							<div class="name_bar">
+								<p>
+									<th:block th:text="${iterStat.index + 1}"></th:block>
+									.
+									<th:block th:text="${user.firstname}"></th:block>
+								</p>
+								<div class="bar_wrap">
+									<div class="inner_bar"
+										th:style="'width:' + (${user.points} * 1.0 / 100) + '%;'"></div>
+								</div>
+							</div>
 
-                    
-                    <div class="lboard_item month" style="display:block;">
-                        <div class="lboard_mem">
-                            <div class="img">
-                                <img src="" >
-                            </div>
-                           
-                            <div class="name_bar">
-                            <p><span>1.</span>Akanksha Tarate</p>
-                            <div class="bar_wrap">
-                                <div class="inner_bar" style="width:95%"></div>
-                            </div>
-                           </div>
+							<div class="points">
+								<th:block th:text="${user.points}"></th:block>
+							</div>
+						</div>
+					</th:block>
 
-                        <div class="points">
-                            1195 points
-                        </div>
-                    </div>
-
-                    
+				</div>
 
 
-                    
-                        <div class="lboard_mem">
-                        <div class="name_bar">
-                            <p><span>2.</span>Praneeta Shirke</p>
-                            <div class="bar_wrap">
-                                <div class="inner_bar" style="width:80%"></div>
-                            </div>
-                        </div>
-
-                        <div class="points">
-                            1185points
-                        </div> 
-                        </div>
-                        
-
-                        
-                            <div class="lboard_mem">
-                            <div class="name_bar">
-                                <p><span>3.</span>Alice Kaushik</p>
-                                <div class="bar_wrap">
-                                    <div class="inner_bar" style="width:60%"></div>
-                                </div>
-                            </div>
-    
-                            <div class="points">
-                                1160 points
-                            </div>
-                        </div>
-                        
-
-                        
-                            <div class="lboard_mem">
-                            <div class="name_bar">
-                                <p><span>4.</span>Alia bhatt</p>
-                                <div class="bar_wrap">
-                                    <div class="inner_bar" style="width:75%"></div>
-                                </div>
-                            </div>
-    
-                            <div class="points">
-                                1175 points
-                            </div>
-                        </div>
-                        
-
-                        
-                            <div class="lboard_mem">
-                            <div class="name_bar">
-                                <p><span>5.</span>Aryan Khan</p>
-                                <div class="bar_wrap">
-                                    <div class="inner_bar" style="width:30%"></div>
-                                </div>
-                            </div>
-    
-                            <div class="points">
-                                1110 points
-                            </div>
-                            </div>
-                    </div>
-                    <div class="lboard_item year" style="display:none;">
-                        <div class="lboard_mem">
-                            <div class="img">
-                                <img src="" >
-                            </div>
-                           
-                            <div class="name_bar">
-                            <p><span>1.</span>Akanksha Tarate</p>
-                            <div class="bar_wrap">
-                                <div class="inner_bar" style="width:95%"></div>
-                            </div>
-                           </div>
-
-                        <div class="points">
-                            2100 points
-                        </div>
-                    </div>
-
-                    
 
 
-                    
-                        <div class="lboard_mem">
-                        <div class="name_bar">
-                            <p><span>2.</span>Praneeta Shirke</p>
-                            <div class="bar_wrap">
-                                <div class="inner_bar" style="width:80%"></div>
-                            </div>
-                        </div>
+			</div>
+		</div>
+	</div>
 
-                        <div class="points">
-                            1185points
-                        </div> 
-                        </div>
-                        
-
-                        
-                            <div class="lboard_mem">
-                            <div class="name_bar">
-                                <p><span>3.</span>Alice Kaushik</p>
-                                <div class="bar_wrap">
-                                    <div class="inner_bar" style="width:60%"></div>
-                                </div>
-                            </div>
-    
-                            <div class="points">
-                                1160 points
-                            </div>
-                        </div>
-                        
-
-                        
-                            <div class="lboard_mem">
-                            <div class="name_bar">
-                                <p><span>4.</span>Alia bhatt</p>
-                                <div class="bar_wrap">
-                                    <div class="inner_bar" style="width:75%"></div>
-                                </div>
-                            </div>
-    
-                            <div class="points">
-                                1175 points
-                            </div>
-                        </div>
-                        
-
-                        
-                            <div class="lboard_mem">
-                            <div class="name_bar">
-                                <p><span>5.</span>Aryan Khan</p>
-                                <div class="bar_wrap">
-                                    <div class="inner_bar" style="width:30%"></div>
-                                </div>
-                            </div>
-    
-                            <div class="points">
-                                1110 points
-                            </div>
-                            </div>
-                    </div>
-
-                    
-
-
-                    </div>
-            </div>
-            
-        </div>
-        <script src="/js/leader.js">
-        let subMenu = document.getElementById("subMenu");
+	</div>
+	<script src="/js/leader.js">
+		let subMenu = document.getElementById("subMenu");
 		function toggleMenu() {
 			subMenu.classList.toggle("open-menu");
 		}
-        </script>
-    </body>
-    </html>
+	</script>
+</body>
+</html>
