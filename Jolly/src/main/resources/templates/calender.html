@@ -5,9 +5,50 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Dynamic Calender</title>
-            <link rel="stylesheet" href="Style.css">
+            <link rel="stylesheet" href="css/Style.css">
             </head>
             <body>
+            
+            <nav>
+		<div class="heading">
+			<a href="/"><img src="asset\images\JollyLogo.png" height="50px"></a>
+		</div>
+
+		<div class="navbar">
+			<ul>
+				<li><a href="/home">Home</a></li>
+				<li><a href="/diary">My Diary</a></li>
+				<li><a href="/leaderboard">Leaderboard</a></li>
+				<li><a href="/about">About</a></li>
+				<li><img src="asset\images\JollyProfile.png" onClick="toggleMenu()"></li>
+			</ul>
+			<div class="sub-menu-wrap" id="subMenu">
+				<div class="sub-menu">
+					<div class="userinfo">
+						<img src="asset\images\JollyProfile.png">
+						<h3>Username</h3>
+					</div>
+					<hr>
+					<a href="#" class="sub-menu-link"> <img
+						src="asset\images\EditProfileLogo.png">
+						<p>Edit Profile</p> <span>></span>
+					</a> <a href="#" class="sub-menu-link"> <img
+						src="asset\images\SettingsLogo.png">
+						<p>Settings and privacy</p> <span>></span>
+					</a> <a href="/feedback" class="sub-menu-link"> <img
+						src="asset\images\HelpLogo.png">
+						<p>Help and Support</p> <span>></span>
+					</a> <a href="/logout" class="sub-menu-link"> <img
+						src="asset\images\LogOutLogo.png">
+						<p>Log out!</p> <span>></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+            
+            
                <!--- <div class="container">
                     <div class="calender">
                         <div class="digital_clock">
@@ -200,5 +241,10 @@
                 </div>
             
             
-                <script src="app.js"></script>
+                <script src="/js/calender.js">
+                let subMenu = document.getElementById("subMenu");
+        		function toggleMenu() {
+        			subMenu.classList.toggle("open-menu");
+        		}
+                </script>
             </body>
