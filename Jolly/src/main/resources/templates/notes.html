@@ -53,6 +53,7 @@
     
     <button class="btn"><img src="asset/images/edit.png" >Create notes</button>
 <div class="notes-container">
+<alert th:text="${message}"></alert>
         <!-- <p contenteditable="true" class="input-box">
         <img src="delete.png">
     </p>     -->
@@ -61,10 +62,7 @@
 </div>
 </th:block>
 <script src="js/notes.js"> 
-	let subMenu = document.getElementById("subMenu");
-	function toggleMenu() {
-		subMenu.classList.toggle("open-menu");
-	}
+	
 </script>
 
 

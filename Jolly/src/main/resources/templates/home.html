@@ -17,7 +17,7 @@
 			<ul>
 				<li><a href="/home">Home</a></li>
 				<li><a href="/diary">My Diary</a></li>
-				<li><a href="/diary">Leaderboard</a></li>
+				<li><a href="/leaderboard">Leaderboard</a></li>
 				<li><a href="/about">About</a></li>
 				<li><img src="asset\images\JollyProfile.png" onClick="toggleMenu()"></li>
 			</ul>
@@ -72,7 +72,7 @@
 		</form>
 	</div>
 	<div class="JollyPlacement">
-		<iframe
+		<iframe id="iframeId"
 			src='https://my.spline.design/jollyfoxhome-ef06bf76125fecf17b1012be6acbf4cf/'
 			frameborder='0' width='700' height='700'></iframe>
 	</div>
@@ -103,23 +103,11 @@
 	}
 	document.getElementById('HappyJolly').addEventListener('click', function (event) {
 		  event.preventDefault(); // Prevent form submission
-		  const container = document.querySelector('.JollyPlacement');
-
-		  // Check if iframe already exists
-		  const existingIframe = container.querySelector('iframe');
-
-		  if (existingIframe) {
-		    // Remove iframe if it exists
-		    container.removeChild(existingIframe);
-		  } else {
-		    // Create and add iframe if it doesn't exist
-		    const iframe = document.createElement('iframe');
-		    iframe.src = "https://my.spline.design/jollyfoxhappy-6a8f9487f9dcc0c5cc3903fb245dfee9/";
-		    iframe.width = "700";
-		    iframe.height = "700";
-		    iframe.style.border = "1px solid black";
-		    container.appendChild(iframe);
+		  const getFrame = document.getElementById("iframeId");
+		  if(getFrame) {
+			  getFrame.src= "https://my.spline.design/jollyfoxhappy-6a8f9487f9dcc0c5cc3903fb245dfee9/";
 		  }
+		  
 		});
 
 	</script>

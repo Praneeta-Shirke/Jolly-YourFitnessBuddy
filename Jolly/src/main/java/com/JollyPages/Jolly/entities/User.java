@@ -30,6 +30,8 @@ public class User {
 	private Workout workout;
 	@ManyToOne
 	private Diet diet;
+
+    @Column(nullable = false, columnDefinition = "int default 1000")
 	private int points;
 	
 	@PrePersist

@@ -1,7 +1,10 @@
 const notesContainer = document.querySelector(".notes-container");
 const createBtn = document.querySelector(".btn");
 let notes = document.querySelectorAll(".input-box");
-
+let subMenu = document.getElementById("subMenu");
+	function toggleMenu() {
+		subMenu.classList.toggle("open-menu");
+	}	
 function shownotes(){
     notesContainer.innerHTML = localStorage.getItem("notes");
 }

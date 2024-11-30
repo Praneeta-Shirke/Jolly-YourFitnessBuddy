@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.JollyPages.Jolly.entities.User;
+import com.JollyPages.Jolly.services.PointsTransactionService;
 import com.JollyPages.Jolly.services.UserService;
 
 
@@ -15,6 +16,7 @@ import com.JollyPages.Jolly.services.UserService;
 public class ProfileController {
 	private UserService userservice;
 	private User user;
+	private PointsTransactionService pointsTransactionService;
 	
 	public ProfileController(UserService userservice) {
 		this.userservice = userservice;
@@ -28,9 +30,6 @@ public class ProfileController {
 	
 	@PostMapping("/signup")
 	public String setUser(@ModelAttribute("user") User user) {
-
-	    System.out.println("User: " + user.getFirstname());
-	    System.out.println("Email: " + user.getGmail());
 		userservice.saveUser(user);
 		return "redirect:/signup";
 	}
@@ -39,9 +38,12 @@ public class ProfileController {
 		return "signup";
 	}
 	@PostMapping("/login")
-	public String handleSignup(@ModelAttribute("user") @RequestParam("gmail") String gmail, @RequestParam("password") String ps, Model model) {
+	public String handleSignup(@ModelAttribute("user") @RequestParam("gmail") String gmail, @RequestParam("password") String ps, Model model,@RequestParam("userid")int userid) {
 			
 		user = userservice.findByGmail(gmail);
+
+        pointsTransactionService.addPointsForInteraction(userid, 200);
+        model.addAttribute("message", "100 Points added for your signup");
 
 		if (gmail == null || gmail.isEmpty() || ps == null || ps.isEmpty()) {
 	        model.addAttribute("error", "Please fill out all fields");

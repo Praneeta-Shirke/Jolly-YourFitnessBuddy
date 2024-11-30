@@ -15,10 +15,9 @@
 			<ul>
 				<li><a href="/home">Home</a></li>
 				<li><a href="/diary">My Diary</a></li>
-				<li><a href="/leaderboard">Leaderboard</a></li>
+				<li><a href="/leaderboard">Leader board</a></li>
 				<li><a href="/about">About</a></li>
-				<li><img src="asset\images\JollyProfile.png"
-					onClick="toggleMenu()"></li>
+				<li><img src="asset\images\JollyProfile.png" onClick="toggleMenu()"></li>
 			</ul>
 			<div class="sub-menu-wrap" id="subMenu">
 				<div class="sub-menu">
@@ -87,38 +86,7 @@
 				</div>
 
 				<div class="lboard_item month" style="display: block;">
-        <div th:if="${#lists.isEmpty(monthlyRankingg)}">No points recorded for today.</div>
-
-					<div class="lboard_item today" style="display: block;">
-        			<div th:if="${#lists.isEmpty(dailyRanking)}">No points recorded for today.</div>
-						<th:block th:each="log, iterStat : ${dailyRanking}">
-							<div class="lboard_mem">
-								<div class="img">
-									<img src="">
-								</div>
-
-								<div class="name_bar">
-									<p>
-										<th:block th:text="${iterStat.index + 1}"></th:block>
-										.
-										<th:block th:text="${log.user.firstname}"></th:block>
-									</p>
-									<div class="bar_wrap">
-										<div class="inner_bar"
-											th:style="'width:' + (${log.points} * 1.0 / 100) + '%;'"></div>
-									</div>
-								</div>
-
-								<div class="points">
-									<th:block th:text="${log.points}"></th:block>
-								</div>
-							</div>
-						</th:block>
-
-					</div>
-				</div>
-				<div class="lboard_item year" style="display: none;">
-					<th:block th:each="user, iterStat : ${users}">
+					<th:block th:each="log, iterStat : ${monthlyRanking}">
 						<div class="lboard_mem">
 							<div class="img">
 								<img src="">
@@ -128,35 +96,50 @@
 								<p>
 									<th:block th:text="${iterStat.index + 1}"></th:block>
 									.
-									<th:block th:text="${user.firstname}"></th:block>
+									<th:block th:text="${log.user.firstname}"></th:block>
+									<th:block th:text="${log.user.lastname}"></th:block>
 								</p>
 								<div class="bar_wrap">
 									<div class="inner_bar"
-										th:style="'width:' + (${user.points} * 1.0 / 100) + '%;'"></div>
+										th:style="'width:' + (${log.points} * 1.0 / 100) + '%;'"></div>
 								</div>
 							</div>
 
 							<div class="points">
-								<th:block th:text="${user.points}"></th:block>
+								<th:block th:text="${log.points}"></th:block>
 							</div>
 						</div>
 					</th:block>
 
 				</div>
+				<div class="lboard_item year" style="display: none;">
+					<th:block th:each="log, iterStat : ${logs}">
+						<div class="lboard_mem">
+							<div class="img">
+								<img src="">
+							</div>
 
+							<div class="name_bar">
+								<p>
+									<th:block th:text="${iterStat.index + 1}"></th:block>
+									.
+									<th:block th:text="${log.user.firstname}"></th:block>
+									<th:block th:text="${log.user.lastname}"></th:block>
+								</p>
+								<div class="bar_wrap">
+									<div class="inner_bar"
+										th:style="'width:' + (${log.points} * 1.0 / 100) + '%;'"></div>
+								</div>
+							</div>
 
-
-
+							<div class="points"></div>
+							<th:block th:text="${log.points}"></th:block>
+						</div>
+				</div>
 			</div>
 		</div>
-	</div>
-
-	</div>
-	<script src="/js/leader.js">
-		let subMenu = document.getElementById("subMenu");
-		function toggleMenu() {
-			subMenu.classList.toggle("open-menu");
-		}
-	</script>
+		</div>
+		<script src="/js/leader.js">
+		</script>
 </body>
 </html>
