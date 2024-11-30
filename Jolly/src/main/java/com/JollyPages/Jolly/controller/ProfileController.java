@@ -16,7 +16,6 @@ import com.JollyPages.Jolly.services.UserService;
 public class ProfileController {
 	private UserService userservice;
 	private User user;
-	private PointsTransactionService pointsTransactionService;
 	
 	public ProfileController(UserService userservice) {
 		this.userservice = userservice;
@@ -38,13 +37,9 @@ public class ProfileController {
 		return "signup";
 	}
 	@PostMapping("/login")
-	public String handleSignup(@ModelAttribute("user") @RequestParam("gmail") String gmail, @RequestParam("password") String ps, Model model,@RequestParam("userid")int userid) {
+	public String handleSignup(@ModelAttribute("user") @RequestParam("gmail") String gmail, @RequestParam("password") String ps, Model model) {
 			
 		user = userservice.findByGmail(gmail);
-
-        pointsTransactionService.addPointsForInteraction(userid, 200);
-        model.addAttribute("message", "100 Points added for your signup");
-
 		if (gmail == null || gmail.isEmpty() || ps == null || ps.isEmpty()) {
 	        model.addAttribute("error", "Please fill out all fields");
 	        return "redirect:/signup"; 
