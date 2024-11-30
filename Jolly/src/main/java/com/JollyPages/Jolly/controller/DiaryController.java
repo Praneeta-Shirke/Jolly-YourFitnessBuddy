@@ -75,4 +75,9 @@ public class DiaryController {
         model.addAttribute("logs", log);
 		return "leader";
 	}
+	
+	@GetMapping("about")
+	public String getData() {
+		return "About";
+	}
 }
